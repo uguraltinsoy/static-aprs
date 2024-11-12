@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  aprs-container:
+    image: uguraltnsy/static-aprs
+    environment:
+      - TERM=xterm
+      - SERVER=4
+      - CALLSIGN=NOCALL
+      - SSID=10
+      - LAT=0.0
+      - LON=0.0
+      - SYMBOL_TABLE=/
+      - SYMBOL=-
+      - COMMENT=No comment
+      - INTERVAL=900
+    restart: always
