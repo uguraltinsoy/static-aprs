@@ -34,11 +34,11 @@ docker run -d \
 ## Installation 2 Compose Method ```docker-compose.yml```
 ## !Edit the ```docker-compose.yml``` file before running
 ```Cmd
-docker-compose -d up
+docker-compose up -d
 ```
 or
 ```Cmd
-docker compose -d up
+docker compose up -d
 ```
 ## Stop application
 ```Cmd
