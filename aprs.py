@@ -12,6 +12,7 @@ def main():
     symbol = os.getenv("SYMBOL", "-")
     comment = os.getenv("COMMENT", "No comment")
     interval = int(os.getenv("INTERVAL", "900"))
+    github = os.getenv("GITHUB", "True").lower() == "true"
     if interval < 60: interval = 60
     elif interval > 900: interval = 900
     elapsed_time = interval
@@ -21,14 +22,14 @@ def main():
             try:
                 os.system('cls' if os.name == 'nt' else 'clear')
                 PASSCODE = passcode_convert(callsign)
-                sendAprsPosition(serverId, callsign, ssid, PASSCODE, lat, lon, symbol_table, symbol, comment)
+                sendAprsPosition(serverId, callsign, ssid, PASSCODE, lat, lon, symbol_table, symbol, comment, github)
                 elapsed_time = 0
             except:
                 print("Package could not be sent")
         time.sleep(1)
         elapsed_time += 1
 
-def sendAprsPosition(serverId, callsign, ssid, passcode, latitude, longitude, symbol_table, symbol, comment="Python via APRS"):
+def sendAprsPosition(serverId, callsign, ssid, passcode, latitude, longitude, symbol_table, symbol, comment="Docker via APRS", github = True):
     server = "rotate.aprs2.net"
     if serverId == 1: server = "rotate.aprs2.net"
     elif serverId == 2: server = "noam.aprs2.net"
@@ -42,7 +43,9 @@ def sendAprsPosition(serverId, callsign, ssid, passcode, latitude, longitude, sy
 
     lat_str = aprs_lat_format(latitude)
     lon_str = aprs_lon_format(longitude)
-    
+
+    if github: comment += " (https://github.com/uguraltinsoy/static-aprs)"
+
     aprs_position = f"{callsign}-{ssid}>APRS,TCPIP*:!{lat_str}{symbol_table}{lon_str}{symbol}{comment}\n"
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
