@@ -42,5 +42,9 @@ docker compose up -d
 ```
 ## Stop application
 ```Cmd
+docker-compose down
+```
+or
+```Cmd
 docker compose down
 ```
