@@ -1,5 +1,7 @@
 # Static - APRS [Docker](https://hub.docker.com/r/uguraltnsy/static-aprs)
 
+[![Sponsor](https://img.shields.io/badge/Sponsor-uguraltinsoy-ea4aaa?style=for-the-badge&logo=github-sponsors)](https://github.com/sponsors/uguraltinsoy)
+
 This application is a simple APRS bridge for amateurs using static location via computer. As long as the program remains open, it will send data continuously during the specified interval.
 
 ### Variables
